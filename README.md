@@ -34,7 +34,7 @@ Note: {5,7} instead of {1,7}, as 1-hex-digit-long entries are usually CPUs and t
 
 Note: Bjorn and Krzysztof agreed `reg = <0x0 0xfeedbeef 0x0 0x1000>` is prefered over `reg = <0 0xfeedbeef 0 0x1000>`
 
-* `rg "reg = <(0|0x0) 0x([0-9a-z]{5,7}|[0-9a-z]{9,}) " arch/arm64/boot/dts/qcom/`
+* `rg "reg = <(0|0x0) 0x([0-9a-z]{5,7}|[0-9a-z]{9,}) (0|0x0) 0x[0-9a-z]+" arch/arm64/boot/dts/qcom/`
   * Get rid of the `0` case once/if things are unified
 * `rg "reg = <0x([0-9a-z]{5,7}|[0-9a-z]{9,}) 0x[0-9a-z]+>" arch/arm64/boot/dts/qcom/ arch/arm/boot/dts/qcom*.dts*`
   * No qcom arm32 socs use, or care about >32bit VAs, for now at least
