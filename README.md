@@ -143,6 +143,7 @@ pm1337_l1: regulator@1feedbeef {
            interrupt-parent = < &{/soc/interrupt-controller@40000} >;
    };
    ```
+* The unit address must not start with 0x (functionally the same, but redundant, as it's interpreted as a hex value regardless)
 
 </br>
 </br>
