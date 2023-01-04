@@ -70,14 +70,83 @@ Note: Bjorn and Krzysztof agreed `reg = <0x0 0xfeedbeef 0x0 0x1000>` is prefered
   * 80 preferred
   * up to 100 no problemo
   * more only if REALLY REALLY REALLY necessary (very rare)
+
+</br>
+</br>
+
+# Node style
+
+Example nodes:
+
+```
+#address-cells = <2>; # 2*32 = 64-bit addressing
+#size-cells = <2>; # 2*32 = 64-bit sizing
+
+label: name@unitaddress {
+        compatible = "foo,bar";
+        reg = <ADDR_HI ADDR_LO SIZE_HI SIZE_LO>;
+        status = "disabled";
+};
+
+e.g.:
+
+/* The definition in a common DTSI */
+pm1337_l1: regulator@1feedbeef {
+        compatible = "imaginary,pmic-regulator";
+        reg = <0x1 0xfeedbeef 0x0 0x1000>;
+};
+
+/* Device-specific override */
+&pm1337_l1 {
+        regulator-min-microvolts = <1000000>;
+        regulator-max-microvolts = <1000000>;
+};
+```
+
 * [Node names should be generic](https://devicetree-specification.readthedocs.io/en/latest/chapter2-devicetree-basics.html#generic-names-recommendation)
 * Ensure `status = "okay"` is there only when necessary (e.g. not when we're first defining the node)
   * `"okay"` is idiomatic, don't use `"ok"`
 * Node name should use hyphens, not underscores
 * Labels should use underscores, not anything else (e.g. hyphens trigger syntax errors)
+* Nodes should be overriden using &label references, this is the least error-prone approach
+   ```
+   /* Common DTSI */
+   nice_device: nice@1337babe {
+           compatible = "very,nice";
+           reg = <0x0 0x1337babe 0x0 0x10>;
+   };
+   
+   /* Device DTS */
+   &nice_device {
+           compatible = "very,nice-revised";
+   };
+   ```
+  * NOT by defining the node again - very error prone and unmaintainable
+   ```
+   WRONG, DON'T FOLLOW
+   /* Common DTSI */
+   somenode@addr {
+           compatible = "some,device";
+           reg = <0x0 0x0000addr 0x0 0x1000>;
+   };
+   
+   /* Device DTS */
+   somenode@addr {
+           comaptible = "some,device-v2";  
+   };
+   ```
+  * NOT by referencing the full path - extremely unmaintainable
+   ```
+   WRONG, DON'T FOLLOW
+   somedevice@addr {
+           [...]
+           interrupt-parent = < &{/soc/interrupt-controller@40000} >;
+   };
+   ```
 
 </br>
 </br>
+
 
 # Check node sorting:
 * Non-MMIO nodes should be sorted alphabetically
