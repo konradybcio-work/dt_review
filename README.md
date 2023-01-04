@@ -71,6 +71,8 @@ Note: Bjorn and Krzysztof agreed `reg = <0x0 0xfeedbeef 0x0 0x1000>` is prefered
   * up to 100 no problemo
   * more only if REALLY REALLY REALLY necessary (very rare)
 * [Node names should be generic](https://devicetree-specification.readthedocs.io/en/latest/chapter2-devicetree-basics.html#generic-names-recommendation)
+* Ensure `status = "okay"` is there only when necessary (e.g. not when we're first defining the node)
+  * `"okay"` is idiomatic, don't use `"ok"`
 
 </br>
 </br>
