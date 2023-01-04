@@ -16,6 +16,8 @@ Note: Johan said he'd prefer to keep #addr-size cells near reg as they both conc
 * `reset-names`
 * `operating-points-v2`
 * `power-domains`
+* `interconnects`
+* `interconnect-names`
 * `required-opps`
 * `phys`
 
