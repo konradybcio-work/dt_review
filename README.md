@@ -12,6 +12,8 @@ Note: Johan said he'd prefer to keep #addr-size cells near reg as they both conc
 * `assigned-clocks`
 * `assigned-clock-parents`
 * `assigned-clock-rates`
+* `resets`
+* `reset-names`
 * `operating-points-v2`
 * `power-domains`
 * `required-opps`
