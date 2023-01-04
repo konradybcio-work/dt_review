@@ -73,6 +73,8 @@ Note: Bjorn and Krzysztof agreed `reg = <0x0 0xfeedbeef 0x0 0x1000>` is prefered
 * [Node names should be generic](https://devicetree-specification.readthedocs.io/en/latest/chapter2-devicetree-basics.html#generic-names-recommendation)
 * Ensure `status = "okay"` is there only when necessary (e.g. not when we're first defining the node)
   * `"okay"` is idiomatic, don't use `"ok"`
+* Node name should use hyphens, not underscores
+* Labels should use underscores, not anything else (e.g. hyphens trigger syntax errors)
 
 </br>
 </br>
