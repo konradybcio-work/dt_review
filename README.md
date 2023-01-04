@@ -70,6 +70,7 @@ Note: Bjorn and Krzysztof agreed `reg = <0x0 0xfeedbeef 0x0 0x1000>` is prefered
   * 80 preferred
   * up to 100 no problemo
   * more only if REALLY REALLY REALLY necessary (very rare)
+* [Node names should be generic](https://devicetree-specification.readthedocs.io/en/latest/chapter2-devicetree-basics.html#generic-names-recommendation)
 
 </br>
 </br>
