@@ -1,5 +1,5 @@
 # Check property order:
-Note: Johan said he'd prefer to keep #addr-size cells near reg as they both concern the reg property
+Note: Johan said he'd prefer to keep #addr-size cells near reg as they both concern the reg property, Krzysztof and Bjorn don't quite agree
 
 * `compatible`
 * `reg`
